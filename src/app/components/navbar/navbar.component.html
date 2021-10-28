@@ -1,0 +1,53 @@
+<!-- <h1>this is navbar</h1> -->
+<mat-toolbar style="border-radius: 5px;" color="accent">
+  <a
+    routerLink="/"
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button with menu icon"
+  >
+    <mat-icon>menu_book</mat-icon>
+  </a>
+  <span>Examportal</span>
+  <span class="example-spacer"></span>
+  <a
+    *ngIf="!isLoggedIn"
+    [routerLink]="'/login'"
+    mat-icon-button
+    class="example-icon favorite-icon mr20 ml20"
+    aria-label="Example icon-button with heart icon"
+  >
+  <mat-icon mat-list-icon>login</mat-icon> Login
+  </a>
+
+  <a
+    *ngIf="!isLoggedIn"
+    [routerLink]="'/signup'"
+    mat-icon-button
+    class="example-icon favorite-icon ml20 mr30"
+    aria-label="Example icon-button with heart icon"
+  >
+  <mat-icon mat-list-icon>how_to_reg</mat-icon> Register
+  </a>
+
+  <a
+    (click)="logout()"
+    *ngIf="isLoggedIn"
+    mat-icon-button
+    class="example-icon favorite-icon mr20 ml20"
+    aria-label="Example icon-button with heart icon"
+  >
+  <mat-icon mat-list-icon>logout</mat-icon> Logout
+  </a>
+
+  <button
+    (click) ="backtor()"
+    *ngIf="isLoggedIn && user"
+    class="example-icon favorite-icon ml20"
+    mat-button
+    aria-label="Example icon-button with heart icon"
+  >
+  <mat-icon mat-list-icon>list</mat-icon> DashBoard
+  </button>
+  
+</mat-toolbar>

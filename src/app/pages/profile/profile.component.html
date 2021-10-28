@@ -1,0 +1,69 @@
+ <mat-card *ngIf="user" style="border-radius: 15px;width: 70%;height: 70%;margin-left: auto;margin-right: auto">
+  <h1>Your Profile Details</h1>
+  <!-- {{ user | json }} -->
+  <mat-card-content>
+    <div class="bootstrap-wrapper">
+      <div class="container">
+        <div class="container text-center">
+          <div class="container text-center" style="height: 170px">
+            <img
+            src= {{user.profileLocation}}
+            alt=" "
+            class="profile-image"
+          />
+          </div>
+          
+          <div class="container text-center">
+            <div class="container text-center"><input mat-button color = "primary" type="file" (change)="onFileChanged($event)"></div>
+            <span>
+              <button mat-button color = "primary" (click)="onUpload()">
+              Upload
+          </button>
+          </span>
+            <span><button mat-button color = "accent" (click)="Ondel()">
+              Delete
+          </button></span>
+          </div>
+          <h1 class="mt20">{{ user.firstName }} {{ user.lastName }}</h1>
+        </div>
+
+        <div class="row">
+          <div class="col-md-10 offset-md-1">
+            <!-- //table Details  -->
+            <table class="table text-center">
+              <tr>
+                <td>Username</td>
+                <td>{{ user.username }}</td>
+              </tr>
+              <tr>
+                <td>Email</td>
+                <td>{{ user.email}}</td>
+              </tr>
+              <tr>
+                <td>Subcription</td>
+                <td>{{ sub}}</td>
+              </tr>
+              <tr>
+                <td>Phone</td>
+                <td>{{ user.phone }}</td>
+              </tr>
+              <tr>
+                <td>Role</td>
+                <td>{{ user.authorities[0].authority }}</td>
+              </tr>
+              <tr>
+                <td>Status</td>
+                <td>{{ user.enabled ? "ACTIVE" : "NOTACTIVE" }}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+  <mat-card-actions class="text-center">
+    <button
+    (click)="backto()"
+    mat-raised-button color="primary">BACK</button>
+  </mat-card-actions>
+</mat-card>

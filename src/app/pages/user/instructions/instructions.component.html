@@ -1,0 +1,110 @@
+<div class="bootstrap-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="container text-center" *ngIf="!isVerified">
+        <h1>Verification</h1>
+        <p>Before Proceeding to take test User Verification is necessary </p>
+        <div style="margin-left: auto; margin-right: auto;">
+          <mat-card style="text-align: center;">
+            <video style="margin-left: auto;margin-right:auto;" [class.show]="!isCaptured" [class.hide]="isCaptured" #video id="video" [width]="WIDTH" [height]="HEIGHT"
+            autoplay></video>
+          <canvas style="margin-left: auto; margin-right:auto;" [class.show]="isCaptured" [class.hide]="!isCaptured" #canvas id="canvas" [width]="WIDTH"
+            [height]="HEIGHT"></canvas>
+          </mat-card>
+          
+        </div>
+
+        <div class="snap-container">
+          <button mat-button color="accent" class="btn btn-primary" *ngIf="!isCaptured" (click)="capture()">Snap Photo</button>
+          <button mat-button color="accent" class="btn btn-danger" *ngIf="isCaptured" (click)="removeCurrent()">Take Another</button>
+          </div>
+          <ul class="list-unstyled">
+            <li *ngFor="let src of captures; let idx = index" (click)="setPhoto(idx)">
+              <img [src]="src" height="50" />
+          </li>
+          </ul>
+          <button mat-button color = "primary" (click)="OnVerify()">
+            Verify 
+        </button>
+
+      </div>
+
+      
+
+
+      <div class="col-md-12" *ngIf="isVerified">
+        <mat-card class="mt20" style="border-radius: 15px;">
+          <mat-card-header>
+            <!-- heading -->
+            <mat-card-title>
+              Read the instructions of this page carefully
+            </mat-card-title>
+            <mat-card-subtitle> One step more to go </mat-card-subtitle>
+          </mat-card-header>
+
+          <mat-card-content class="ml20">
+            <!-- content  -->
+
+            <h1>{{ quiz.title }}</h1>
+            <p>{{ quiz.description }}</p>
+
+            <mat-divider></mat-divider>
+            <br />
+            <h1>Important Instructions</h1>
+
+            <ul>
+              <li>This quiz is only for practice purpose.</li>
+
+              <!-- Let the time of each questions is  2 minutes -->
+              <li>
+                You have to submit quiz with in
+                <b> {{ num * 2 }} Minutes.</b>
+              </li>
+              <li>You can attempt the quiz any number of time .</li>
+              <li>
+                There are <b>{{ questions.length }} questions</b> in this
+                quiz.
+              </li>
+              <li>
+                Each questions carries
+                <b>{{ eachmark }} marks</b>. No
+                negative marking for wrong ones.
+              </li>
+              <li>All questions is of MCQ Types.</li>
+            </ul>
+
+            <mat-divider></mat-divider>
+            <br />
+            <h1>Attempting Quiz</h1>
+            <ul>
+              <li>Click <b>Start Quiz</b> button to start the quiz</li>
+              <li>
+                The time will start the moment you click the Start Test button.
+              </li>
+              <li>
+                You can not resume this quiz, if interrupted due to any reason.
+              </li>
+              <li>Scroll downl to move to next question.</li>
+              <li>Click on Submit Quiz button on completion of the quiz.</li>
+              <li>
+                Report of the test is automatically generated in the form of PDF
+                copy
+              </li>
+            </ul>
+          </mat-card-content>
+          <mat-card-actions class="text-center">
+            <!-- actions -->
+            <button
+              (click)="startQuiz()"
+              class=""
+              mat-raised-button
+              color="primary"
+            >
+              Start QUIZ
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>
