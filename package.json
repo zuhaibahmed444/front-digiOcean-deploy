@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "postinstall": "ng build --aot -prod"
+    "heroku-postbuild": "ng build --prod"
   },
  
   "private": true,
@@ -17,6 +17,8 @@
     "@angular/animations": "~11.2.11",
     "@angular/cdk": "^11.2.10",
     "@angular/common": "~11.2.11",
+    "@angular/cli": "~11.2.10",
+    "@angular/compiler-cli": "~11.2.11",
     "@angular/compiler": "~11.2.11",
     "@angular/core": "~11.2.11",
     "@angular/forms": "~11.2.11",
@@ -34,8 +36,10 @@
     "pdfmake": "^0.2.2",
     "rxjs": "~6.6.0",
     "express": "^4.17.1",
+    "path": "^0.12.7",
     "sweetalert2": "^10.16.7",
     "tslib": "^2.0.0",
+    "typescript": "~4.1.5",
     "zone.js": "~0.11.3"
   },
   "devDependencies": {
